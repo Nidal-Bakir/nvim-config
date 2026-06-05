@@ -1,18 +1,37 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        opts = {
-            settings = {
-                gopls = {
-                    gofumpt = true
-                }
-            }
-        }
+        config = function()
+            vim.lsp.config("gopls", {
+                settings = {
+                    gopls = {
+                        gofumpt = true,
+                    },
+                },
+            })
+        end,
     },
+
+    {
+        "williamboman/mason.nvim",
+        opts = {
+            ui = {
+                icons = {
+                    package_installed = "✓",
+                    package_pending = "➜",
+                    package_uninstalled = "✗",
+                },
+            },
+        },
+    },
+
     {
         "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "neovim/nvim-lspconfig",
+        },
         opts = {
-            -- list of servers for mason to install
             ensure_installed = {
                 "ts_ls",
                 "html",
@@ -23,38 +42,25 @@ return {
                 "prismals",
                 "pyright",
                 "eslint",
+                "gopls",
             },
-        },
-        dependencies = {
-            {
-                "williamboman/mason.nvim",
-                opts = {
-                    ui = {
-                        icons = {
-                            package_installed = "✓",
-                            package_pending = "➜",
-                            package_uninstalled = "✗",
-                        },
-                    },
-                },
-            },
-            "neovim/nvim-lspconfig",
         },
     },
+
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+        },
         opts = {
             ensure_installed = {
-                "prettier", -- prettier formatter
-                "stylua",   -- lua formatter
-                "isort",    -- python formatter
-                "black",    -- python formatter
+                "prettier",
+                "stylua",
+                "isort",
+                "black",
                 "pylint",
                 "eslint_d",
             },
-        },
-        dependencies = {
-            "williamboman/mason.nvim",
         },
     },
 }

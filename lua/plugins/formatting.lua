@@ -21,6 +21,7 @@ return {
                 lua = { "stylua" },
                 python = { "isort", "black" },
                 go = { "goimports", "gofumpt" },
+                dart = { "dart_format" },
             },
         })
 
