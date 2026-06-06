@@ -7,7 +7,9 @@ return {
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
 			"nvim-tree/nvim-web-devicons",
+			"folke/snacks.nvim",
 		},
+
 		keys = {
 			{
 				"<leader>e",
@@ -15,22 +17,47 @@ return {
 				desc = "Toggle Neo-tree",
 			},
 		},
-		opts = {
-			window = {
+
+		opts = function(_, opts)
+			local events = require("neo-tree.events")
+
+			local function on_move(data)
+				Snacks.rename.on_rename_file(data.source, data.destination)
+			end
+
+			opts.event_handlers = opts.event_handlers or {}
+
+			vim.list_extend(opts.event_handlers, {
+				{
+					event = events.FILE_MOVED,
+					handler = on_move,
+				},
+				{
+					event = events.FILE_RENAMED,
+					handler = on_move,
+				},
+			})
+
+			opts.window = {
 				position = "right",
-			},
-			follow_current_file = {
-				enabled = true,
-				leave_dirs_open = true,
-			},
-			filesystem = {
+			}
+
+			opts.filesystem = vim.tbl_deep_extend("force", opts.filesystem or {}, {
 				hijack_netrw_behavior = "open_current",
+
+				use_libuv_file_watcher = true,
+
+				follow_current_file = {
+					enabled = true,
+					leave_dirs_open = true,
+				},
+
 				filtered_items = {
 					hide_dotfiles = false,
 					hide_gitignored = false,
 				},
-			},
-		},
+			})
+		end,
 	},
 	{
 		"Crysthamus/nvim-file-operations",

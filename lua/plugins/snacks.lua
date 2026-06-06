@@ -5,6 +5,9 @@ return {
 		priority = 1000,
 		opts = {
 			image = {},
+			input = {},
+			quickfile = {},
+			scroll = {},
 			terminal = {
 				auto_close = true,
 				win = {
