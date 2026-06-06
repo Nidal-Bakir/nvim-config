@@ -9,6 +9,16 @@ return {
 					},
 				},
 			})
+
+			vim.lsp.config("harper_ls", {
+				settings = {
+					["harper-ls"] = {
+						linters = {
+							SentenceCapitalization = false,
+						},
+					},
+				},
+			})
 		end,
 	},
 
@@ -43,6 +53,17 @@ return {
 				"pyright",
 				"eslint",
 				"gopls",
+				"yamlls",
+				"codebook",
+				"isort",
+				"kotlin_lsp",
+				"lemminx",
+				"nginx_language_server",
+				"postgres_lsp",
+				"pylint",
+				"stylua",
+				"systemd_lsp",
+				"prettier",
 			},
 		},
 	},
