@@ -9,8 +9,8 @@ vim.opt.shiftwidth = 4 -- indent width
 vim.opt.clipboard:append("unnamedplus") -- use system clipboard
 
 vim.opt.wrap = false -- do not wrap lines by default
-vim.opt.scrolloff = 8 -- keep 10 lines above/below cursor
-vim.opt.sidescrolloff = 8 -- keep 10 lines to left/right of cursor
+vim.opt.scrolloff = 10 -- keep 10 lines above/below cursor
+vim.opt.sidescrolloff = 10 -- keep 10 lines to left/right of cursor
 
 vim.opt.ignorecase = true -- case insensitive search
 vim.opt.smartcase = true -- case sensitive if uppercase in string
@@ -21,7 +21,7 @@ vim.opt.backup = false -- do not create a backup file
 vim.opt.writebackup = false -- do not write to a backup file
 vim.opt.swapfile = false -- do not create a swapfile
 vim.opt.updatetime = 300 -- faster completion
-vim.opt.timeoutlen = 500 -- timeout duration
+vim.opt.timeoutlen = 300 -- timeout duration
 vim.opt.ttimeoutlen = 50 -- key code timeout
 vim.opt.autoread = true -- auto-reload changes if outside of neovim
 vim.opt.autowrite = true -- do auto-save

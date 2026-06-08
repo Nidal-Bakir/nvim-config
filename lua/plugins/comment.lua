@@ -1,5 +1,10 @@
 return {
-    'numToStr/Comment.nvim',
-    opts = {
-    }
+	"numToStr/Comment.nvim",
+	opts = {
+		toggler = {
+			---Line-comment toggle keymap
+			line = "gc",
+		},
+	},
 }
+
