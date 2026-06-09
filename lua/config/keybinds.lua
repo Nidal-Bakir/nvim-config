@@ -36,3 +36,5 @@ vim.keymap.set({'n','v'}, '<C-j>', '<C-d>', { desc = 'Scroll half page down', no
 
 -- Map Ctrl+K to scroll half page up
 vim.keymap.set({'n','v'}, '<C-k>', '<C-u>', { desc = 'Scroll half page up', noremap = true })
+
+vim.keymap.set('n', '<C-l>', '<C-^>', { desc = 'Jump to last used buffer' })

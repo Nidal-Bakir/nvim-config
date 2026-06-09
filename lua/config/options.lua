@@ -72,14 +72,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		})
 	end,
 })
-
-vim.keymap.set("n", "<leader>bs", function()
-	-- Open a new horizontal split
-	vim.cmd("new")
-
-	-- Set local options to make it a temporary scratchpad
-	local buf = vim.api.nvim_get_current_buf()
-	vim.api.nvim_set_option_value("buftype", "nofile", { buf = buf })
-	vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = buf })
-	vim.api.nvim_set_option_value("swapfile", false, { buf = buf })
-end, { desc = "Open a temporary scratch buffer" })

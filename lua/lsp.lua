@@ -11,11 +11,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 		-- keymap.set("n", "gr", vim.lsp.buf.references, { desc = "LSP References" })
 
-		opts.desc = "Go to declaration"
-		keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+		-- opts.desc = "Go to declaration"
+		-- keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
 		opts.desc = "Show LSP definition"
-		keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- show lsp definition
+		-- keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- show lsp definition
+		keymap.set("n", "gD", "<cmd>Lspsaga goto_definition<CR>", opts)
+		keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
 
 		opts.desc = "Show LSP implementations"
 		keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
@@ -24,10 +26,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
 		opts.desc = "See available code actions"
-		keymap.set({ "n", "v" }, "ga", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+		-- keymap.set({ "n", "v" }, "ga", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+		keymap.set({ "n", "v" }, "ga", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions, in visual mode will apply to selection
 
 		opts.desc = "Smart rename"
-		keymap.set("n", "grn", vim.lsp.buf.rename, opts) -- smart rename
+		-- keymap.set("n", "grn", vim.lsp.buf.rename, opts) -- smart rename
+		keymap.set("n", "grn", "<cmd>Lspsaga rename<CR>", opts)
 
 		opts.desc = "Show buffer diagnostics"
 		keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
@@ -46,7 +50,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, opts) -- jump to next diagnostic in buffer
 
 		opts.desc = "Show documentation for what is under cursor"
-		keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+		-- keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+		keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 
 		opts.desc = "Restart LSP"
 		keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
