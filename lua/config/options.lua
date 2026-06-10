@@ -26,13 +26,14 @@ vim.opt.ttimeoutlen = 50 -- key code timeout
 vim.opt.autoread = true -- auto-reload changes if outside of neovim
 vim.opt.autowrite = true -- do auto-save
 
-vim.api.nvim_create_autocmd({ "InsertLeave", "FocusLost" }, {
-	callback = function()
-		if vim.bo.modified and vim.bo.buftype == "" then
-			vim.cmd("silent! write")
-		end
-	end,
-})
+-- vim.api.nvim_create_autocmd({ "InsertLeave", "FocusLost" }, {
+-- 	callback = function()
+-- 		if vim.bo.modified and vim.bo.buftype == "" then
+-- 			vim.cmd("silent! write")
+-- 		end
+-- 	end,
+-- })
+--
 
 vim.opt.showmatch = true -- highlights matching brackets
 vim.opt.completeopt = "menuone,noinsert,noselect" -- completion options
